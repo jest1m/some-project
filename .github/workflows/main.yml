@@ -5,6 +5,9 @@
 #-------------------------------
 
 name: CI
+env:
+  APPLICATION_NAME="Flask" 
+  DEPLOY_PACKAGE_NAME="flask-deploy-ver-${{ github.sha }}"
 
 # Controls when the action will run. 
 on: 
@@ -24,7 +27,12 @@ jobs:
     steps:
     - name: Print hello from testing
       run:  echo "Hello from testing job"
-    
+    - name: Execute  some commands
+      run: 
+        echo "Hello message1"
+        echo "Hello message2"
+        echo "Application name: ${{ env.APPLICATION_NAME }}"
+        
   deploy:
     runs-on: ubuntu-latest
     needs: [testing]
@@ -32,4 +40,7 @@ jobs:
     steps:
     - name: Print hello from deploy
       run:  echo "Hello from deploy job"
+      
+    - name: Deploy package
+      run:  echo "Deploy package name is : ${{ env.DEPLOY_PACKAGE_NAME }}"
 
