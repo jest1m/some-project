@@ -19,14 +19,14 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   testing:
-    runs-on: Linux
+    runs-on: ubuntu-latest 
     
     steps:
     - name: Print hello from testing
       run:  echo "Hello from testing job"
     
   deploy:
-    runs-on: Linux
+    runs-on: ubuntu-latest
     needs: [testing]
     
     steps:
