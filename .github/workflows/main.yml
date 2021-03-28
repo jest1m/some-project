@@ -28,6 +28,15 @@ jobs:
     - name: Print hello from testing
       run: 
         echo "Hello from testing job"
+        
+    - name: List current folder
+      run:  ls -la
+      
+    - name: Git clone myrepo
+      uses: actions/checkout@v1
+      
+    - name: List current folder
+      run:  ls -la
       
     - name: Execute some commands
       run:
@@ -45,6 +54,10 @@ jobs:
       
     - name: Deploy package
       run:
-        echo "asdsadsad"
         echo "Deploy package name is $DEPLOY_PACKAGE_NAME"
 
+    - name: lets test packages 1
+      run:  aws --version
+      
+    - name: lets test packages 1
+      run:  zip
