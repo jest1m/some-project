@@ -15,14 +15,11 @@ pipeline {
                 sh 'ssh root@ec2 \'hostname\''
                 }
         }
-    }
-    stages {
         stage("Second step") {
             steps {
                 sh 'ssh root@ec2 \'uptime\''
-                }
+            }
         }
     }
-
 }
 
