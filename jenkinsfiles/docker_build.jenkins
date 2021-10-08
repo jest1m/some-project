@@ -16,9 +16,9 @@ pipeline {
 	stage("docker login") {
             steps {
                 echo "==============docker login=============="
-                withCredentials([usernamePassword(credentialsId: 'xdeprecator', usernameVariable: 'USERNAME', passwordVariable:'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'xdeprecator', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh """
-			docker login -u 'USERNAME' -p 'PASSWORD'
+			docker login -u $USERNAME -p $PASSWORD
 			"""
                 }
             }
@@ -34,9 +34,9 @@ pipeline {
 	stage("push docker image") {
             steps {
                 echo "==============start pushing image=============="
-                sh """
+                sh '''
 		docker push xdeprecator/toolbox:latest
-		"""
+		'''
             }
         }
     }
